@@ -1,3 +1,90 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.home{
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(../image/banner-bg.webp) no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-top: 17rem;
+    padding-bottom: 10rem;
+}
+.home .content{
+    text-align: center;
+    width: 60rem;
+}
+.home .content h3{
+    color: white;
+    font-size: 3rem;
+    text-shadow: #666;
+}
+.home .content h3 span{
+    color:rgb(26, 226, 26);
+}
+.home .content p{
+    color: white;
+    font-size: 1.7rem;
+    padding: 1rem 0;
+    line-height: 1.8;
+}
+
+
+.products {
+    width: 100%;
+    height: fit-content;
+    background-color: rgba(163, 163, 163, 0.329);
+}
+.products .product-slider{
+    padding: 1rem;
+}
+.swiper-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+.heading{
+    text-align: center;
+    font-size: 35px;
+}
+.heading span{
+    color: rgb(33, 176, 152);
+}
+.products .product-slider .box{
+    width: 30%;
+    height: 65vh;
+    border-radius: .5rem;
+    text-align: center;
+    outline-offset: -1rem;
+    box-shadow: 0 .5rem 2rem rgb(0, 0, 0);
+    border-bottom: 2px solid black;
+    transition: .2s linear;
+}
+.products .product-slider .box img{
+    height: 15rem;
+    background: url(../image/cart-img-3.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: .5rem;
+    background-color: rgba(254, 254, 254, 0.653);
+}
+.products .product-slider .box h3{
+    font-size: 2.5rem;
+    color:rgb(21, 75, 122);
+}
+.products .product-slider .box .price{
+    font-size:2rem;
+    color: #476869;
+    padding: .5rem 0;
+    margin-bottom: 5px;
+}
+.products .product-slider .box a{
+    border: 1px solid black;
+    color: rgb(13, 85, 75);
+    border-radius: .5rem;
+    padding: 10px;
+}
