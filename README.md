@@ -8,3 +8,7 @@ When you clone make sure you run the following commands
 - npm install
 - npm run dev
 
+After running the commands stated above use 
+-php artisan serve
+
+
