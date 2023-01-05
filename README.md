@@ -7,8 +7,6 @@ When you clone make sure you run the following commands
 
 - npm install
 - npm run dev
-
-After running the commands stated above use 
--php artisan serve
-
-
+- Copy the .env.example and rename it .env
+- composer install 
+- php artisan serve
