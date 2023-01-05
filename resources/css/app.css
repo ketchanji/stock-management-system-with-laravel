@@ -39,7 +39,7 @@
     padding-bottom: 90px;
     display: flex;
     align-items: center;
-    background-color: rgba(191, 163, 163, 0.508);
+    background-color: rgba(135, 135, 135, 0.508);
 }
 .contain-1{
     width: 55%;
@@ -90,7 +90,7 @@
 .products {
     width: 100%;
     height: fit-content;
-    background-color: rgba(163, 163, 163, 0.329);
+    background-color: rgba(105, 105, 105, 0.329);
 }
 .products .product-slider{
     padding: 1rem;
