@@ -11,6 +11,22 @@
 
     </section>
 
+    <div class="container-2">
+      <div class="contain-1">
+        <div class="image">
+
+        </div>
+      </div>
+      <div class="contain-2">
+        <h1>Stay Safe,And Book ride with Us</h1>
+        <p>Never let location be an issue when accessing your files. Fylo has you covered for all of your file 
+          storage needs.</p>
+          <p>Securely share files and folders with friends, family and colleagues for live collaboration. No email 
+            attachments required.</p>
+            <button>See how Fylo works <img src="/images/icon-arrow.svg" alt=""> </button>
+      </div>
+    </div>
+
     <section class="products" id="products">
 
         <h1 class="heading"> Our <span>vehicles</span> </h1>
