@@ -1,7 +1,7 @@
 <x-layout>
     <x-navbar />
     {{-- ADD CODE FOR HOME PAGE HERE --}}
-    <section class="home">
+    <hr><section class="home">
         <div class="container1">
             <h1>FAST AND EASY <span>WAY TO RENT</span> A CAR</h1>
             <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quasi ullam esse officia quos ex laborum fugit quidem libero dolorum.</P>
@@ -11,24 +11,7 @@
         </div>
     </section>
 
-    <section class="form">
-        <form action="">
-            <div class="address">
-                <label for="address">Address</label>
-                <input type="text" id="address" placeholder="ENTER YOUR ADDRESS">
-            </div>
-            <div class="Pick-up">
-                <label for="">Pick-up</label>
-                <input type="date" id="Pick-up">
-            </div>
-            <div class="Time">
-                <label for="Time">Time</label>
-                <input type="time" id="Time">
-            </div>
-            <button class="btn">submit</button>
-
-        </form>
-    </section>
+   
 
     <section class="our-service">
         <div class="small-container2">
@@ -113,7 +96,7 @@
             <div class="testy">
                 <img src="" alt="">
                 <h1>Alexandra</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis odit obcaecati asperiores eaque ipsa consectetur</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis odit obcaecati asperiores eaque </p>
             </div>
             <div class="testy">
                 <img src="" alt="">
@@ -122,6 +105,8 @@
             </div>
         </div>
     </section>
+
+<hr>
 
  <x-footer />
 
