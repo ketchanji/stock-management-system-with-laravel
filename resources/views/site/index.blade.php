@@ -67,7 +67,7 @@
     <section class="product">
         <h1>We Have Everything You Need</h1>
         <div class="main">
-            <div class="card1">
+            <div class="card">
                 <h1>BMW RS8</h1>
                 <img src="" alt="">
                 <ul>
@@ -77,7 +77,7 @@
                 </ul>
                 <button class="btn3">Book Now</button>
             </div>
-            <div class="card1">
+            <div class="card">
                 <h1>BMW W24</h1>
                 <img src="" alt="">
                 <ul>
@@ -87,7 +87,7 @@
                 </ul>
                 <button class="btn3">Book Now</button>
             </div>
-            <div class="card1">
+            <div class="card">
                 <h1>BMW W88</h1>
                 <img src="" alt="">
                 <ul>
@@ -99,5 +99,30 @@
             </div>
         </div>
     </section>
+
+    <section class="testimonial">
+
+    <h1>WHAT OUR CLIENTS SAY</h1>
+
+        <div class="testimony">
+            <div class="testy">
+                <img src="" alt="">
+                <h1>Alexandra</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.  odit obcaecati asperiores eaque ipsa consectetur.</p>
+            </div>
+            <div class="testy">
+                <img src="" alt="">
+                <h1>Alexandra</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis odit obcaecati asperiores eaque ipsa consectetur</p>
+            </div>
+            <div class="testy">
+                <img src="" alt="">
+                <h1>Alexandra</h1>
+                <p>Lorem ipsum dolor sit amet consecur adipisicing elit. Perferes odit asperiores eaque ipsa consectetur,</p>
+            </div>
+        </div>
+    </section>
+
+ <x-footer />
 
 </x-layout>
