@@ -48,7 +48,7 @@
     </section>
 
     <section class="product">
-        <h1>We Have Everything You Need</h1>
+        <h1>Available Cars</h1>
         <div class="main">
             <div class="card">
                 <h1>BMW RS8</h1>
