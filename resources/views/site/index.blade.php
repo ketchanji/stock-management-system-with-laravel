@@ -3,7 +3,7 @@
     {{-- ADD CODE FOR HOME PAGE HERE --}}
     <hr><section class="home">
         <div class="container1">
-            <h1>FAST AND EASY <span>WAY TO RENT</span> A CAR</h1>
+            <h1>FAST AND EASY <span>WAY TO BOOK</span> A CAR</h1>
             <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quasi ullam esse officia quos ex laborum fugit quidem libero dolorum.</P>
         </div>
         <div class="container2">
