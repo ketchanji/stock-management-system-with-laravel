@@ -17,13 +17,12 @@ Route::get('/', function () {
     return view('site.index');
 });
 
-
-Route::get('/booking', function() {
-    return view('site.booking');
+Route::get('/login', function() {
+    return view('site.login');
 });
 
-Route::get('/contact', function() {
-    return view('site.contact');
+Route::get('/register', function() {
+    return view('site.register');
 });
 
 Route::get('/dashboard', function() {
