@@ -1,5 +1,5 @@
 
-<footer class="w-full bg-sky-800 text-gray-200 shadow md:px-6 md:py-8 dark:bg-gray-900">
+<footer class="w-full bg-slate-900 text-gray-200 shadow md:px-6 md:py-8 dark:bg-gray-900">
     <div class="sm:flex sm:items-center sm:justify-between md:px-10 lg:px-15">
         <a href="/" class="flex items-center mb-4 sm:mb-0">
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Magazine.com</span>

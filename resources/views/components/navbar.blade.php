@@ -1,4 +1,4 @@
-<div class="w-full bg-sky-800 text-gray-200">
+<div class="w-full bg-slate-900 text-gray-200">
     <div x-data="{ open: false }" class="mx-auto flex max-w-screen-xl flex-col px-4 md:flex-row md:items-center md:justify-between md:px-6 lg:px-8">
       <div class="flex flex-row items-center justify-between p-4">
         <a href="/" class="focus:shadow-outline rounded-lg text-lg font-semibold uppercase tracking-widest text-white focus:outline-none">Magazine.com</a>
@@ -10,9 +10,9 @@
         </button>
       </div>
       <nav :class="{'flex': open, 'hidden': !open}" class="hidden flex-grow flex-col pb-4 md:flex md:flex-row md:justify-end md:pb-0">
-        <a class="focus:shadow-outline mt-2 rounded-lg  px-4 py-2 text-sm font-semibold  hover:text-black-900 focus:bg-gray-200 focus:text-gray-900 focus:outline-none md:mt-0" href="#">Home</a>
+        <a class="focus:shadow-outline mt-2 rounded-lg  px-4 py-2 text-sm font-semibold  hover:text-black-900 focus:bg-gray-200 focus:text-gray-900 focus:outline-none md:mt-0" href="/">Home</a>
         {{-- <a class="focus:shadow-outline mt-2 rounded-lg text-[#fff] bg-transparent px-4 py-2 text-sm font-semibold  hover:text-black-900 focus:bg-gray-200 focus:text-gray-900 focus:outline-none md:mt-0 md:ml-4" href="#">Rides</a> --}}
-        <a class="focus:shadow-outline mt-2 rounded-lg text-[#fff] bg-transparent px-4 py-2 text-sm font-semibold  hover:text-black-900 focus:bg-gray-200 focus:text-gray-900 focus:outline-none md:mt-0 md:ml-4" href="#">Login</a>
+        <a class="focus:shadow-outline mt-2 rounded-lg text-[#fff] bg-transparent px-4 py-2 text-sm font-semibold  hover:text-black-900 focus:bg-gray-200 focus:text-gray-900 focus:outline-none md:mt-0 md:ml-4" href="/login">Login</a>
       </nav>
     </div>
   </div>

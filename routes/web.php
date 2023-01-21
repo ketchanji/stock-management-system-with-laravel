@@ -29,3 +29,11 @@ Route::get('/dashboard', function() {
     return view('dashboard.index');
 });
 
+Route::get('/profile', function() {
+    return view('dashboard.profile');
+});
+
+Route::get('/tables', function() {
+    return view('dashboard.tables');
+});
+
