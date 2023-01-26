@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
+            $table->string('product_name');  //varchar(255)
+            $table->string('product_image');  
+            $table->char('product_status');  //char(50)
+            $table->integer('product_price');  //integer(100)
+            $table->integer('product_quantity');  //integer(100)
             $table->timestamps();
         });
     }
@@ -29,9 +28,9 @@ return new class extends Migration
      * Reverse the migrations.
      *
      * @return void
-     */
+     */ 
     public function down()
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('products');
     }
 };

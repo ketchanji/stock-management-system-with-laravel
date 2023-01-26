@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('site.index');
 });
@@ -25,15 +28,70 @@ Route::get('/register', function() {
     return view('site.register');
 });
 
-Route::get('/dashboard', function() {
-    return view('dashboard.index');
+// Admins route pages
+
+// Route::get('/admin', function() {
+//     return view('dashboards.admin.index');
+// });
+
+// Route::get('/profile', function() {
+//     return view('dashboards.admin.profile');
+// });
+
+// Route::get('/all-stock', function() {
+//     return view('dashboards.admin.all-stock');
+// });
+
+// Route::get('/inventory', function() {
+//     return view('dashboards.admin.inventory');
+// });
+
+// Manager route pages
+
+// Route::get('/manager', function() {
+//     return view('dashboards.manager.index');
+// });
+
+// Route::get('/profile', function() {
+//     return view('dashboards.manager.profile');
+// });
+
+// Route::get('/all-stock', function() {
+//     return view('dashboards.manager.all-stock');
+// });
+
+// Route::get('/inventory', function() {
+//     return view('dashboards.manager.inventory');
+// });
+
+
+// Worker route pages
+
+Route::get('/worker', function() {
+    return view('dashboards.worker.index');
 });
 
 Route::get('/profile', function() {
-    return view('dashboard.profile');
+    return view('dashboards.worker.profile');
 });
 
-Route::get('/tables', function() {
-    return view('dashboard.tables');
+Route::get('/all-stock', function() {
+    return view('dashboards.worker.all-stock');
+});
+
+Route::get('/inventory', function() {
+    return view('dashboards.worker.inventory');
+});
+
+
+
+Route::Post('/all-stock', function() {
+    Product::create([
+        'product_name' => request('product_name'),
+        'product_image' => request('product_image'),
+        'product_status' => request('product_status') ,
+        'product_price' => request('product_price'),
+        'product_quantity' => request('product_quantity')  
+    ]);
 });
 
