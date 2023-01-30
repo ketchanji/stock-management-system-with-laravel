@@ -125,6 +125,18 @@
           <h6 class="mb-0 font-bold capitalize">All Stock</h6>
         </nav>
 
+        @if (session('status'))
+        <div class="flex p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+          <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">{{ session('status') }}</span>
+          </div>
+        </div>
+        @endif
+
         <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
           <div class="flex items-center md:ml-auto md:pr-4"></div>
           <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
@@ -264,43 +276,52 @@
 
                 <!-- Main modal -->
                 <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                  <div class="relative w-full h-full max-w-md md:h-auto">
+                  <div class="relative w-full h-full max-w-2xl md:h-auto">
                     <!-- Modal content -->
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                       <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                        <svg aria-hidden="true" class="w-7 h-5" fill="currentColor" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
                         <span class="sr-only">Close modal</span>
                       </button>
                       <div class="px-6 py-6 lg:px-8">
                         <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add New Product</h3>
-                        <form action="/all-stock" method="POST">
+                        <form action="{{ url('all-stock') }}" method="POST" enctype="multipart/form-data">
                           @csrf
                           <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                             <div>
                               <label class="text-gray-700 dark:text-gray-200" for="product_name">Product Name</label>
-                              <input id="product_name" name="product_name" type="text" placeholder="Product Name" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                              <input id="product_name" name="product_name" type="text" placeholder="Product Name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                             </div>
 
                             <div>
                               <label class="text-gray-700 dark:text-gray-200" for="product_quantity">Product Quantity</label>
-                              <input id="product_quantity" name="product_quantity" type="number"  placeholder="10" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                              <input id="product_quantity" name="product_quantity" type="number" placeholder="10" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                             </div>
 
                             <div>
                               <label class="text-gray-700 dark:text-gray-200" for="product_price">Product Price</label>
-                              <input id="product_price" name="product_price" type="number" placeholder="price" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                              <input id="product_price" name="product_price" type="number" placeholder="price" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                             </div>
                             <div>
                               <label class="text-gray-700 dark:text-gray-200" for="product_status">Product Status</label>
-                              <input id="product_Sstatus" name="product_status" type="text" placeholder="status" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                              <input id="product_Sstatus" name="product_status" type="text" placeholder="status" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                             </div>
 
                             <div>
-                              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload image</label>
-                              <input class="block w-full text-sm text-white-200 border border-sky-300 rounded-lg cursor-pointer bg-sky-50" id="file_input" type="file" name="product_image" required>
+                              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="product_image">Upload image</label>
+                              <input class="block w-full text-sm text-white-200 border border-sky-300 rounded-lg cursor-pointer bg-sky-50" id="product_image" type="file" name="product_image">
                             </div>
+
+                            <select id="product_category" name="product_category" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                              <option selected>Select Category</option>
+                              <option value="US">United States</option>
+                              <option value="CA">Canada</option>
+                              <option value="FR">France</option>
+                              <option value="DE">Germany</option>
+                            </select>
+
                           </div>
 
                           <div class="flex justify-end mt-6">
@@ -337,138 +358,110 @@
                     </tr>
                   </thead>
                   <tbody>
-
+                    @foreach ($product as $prod)
                     <tr>
                       <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <div class="flex px-2 py-1">
 
                           <div class="flex flex-col justify-center">
-                            <h6 class="mb-0 leading-normal text-sm">dress</h6>
+                            <h6 class="mb-0 leading-normal text-sm">{{$prod['product_name']}}</h6>
                           </div>
                         </div>
                       </td>
                       <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <div>
-                          <img src="../assets/img/team-2.jpg" class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-[70px] w-[70px] rounded-xl" alt="user1" />
+                          <img src="{{$prod['product_image']}}" class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-[70px] w-[70px] rounded-xl" alt="user1" />
                         </div>
                       </td>
                       <td class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
-                        <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-3.6 text-xs rounded-1.8 py-2.2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">instock</span>
+                        <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-3.6 text-xs rounded-1.8 py-2.2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{$prod['product_status']}}</span>
                       </td>
                       <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <span class="font-semibold leading-tight text-xs text-slate-400">7000</span>
+                        <span class="font-semibold leading-tight text-xs text-slate-400">{{$prod['product_price']}}</span>
                       </td>
                       <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <span class="font-semibold leading-tight text-xs text-slate-400">200</span>
+                        <span class="font-semibold leading-tight text-xs text-slate-400">{{$prod['product_quantity']}}</span>
                       </td>
                       <td>
                         <button data-modal-target="popup-modal-2" data-modal-toggle="popup-modal-2" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:bg-gray-600"> Delete </a>
                         </button>
                       </td>
                       <td>
-                      <button data-modal-target="authentication-modal-2" data-modal-toggle="authentication-modal-2" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-700 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600">Update</button>
+                        <button data-modal-target="authentication-modal-2" data-modal-toggle="authentication-modal-2" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-700 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600">Update</button>
                         </button>
                       </td>
                     </tr>
-                    <tr>
-                      <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <div class="flex px-2 py-1">
-                          <div class="flex flex-col justify-center">
-                            <h6 class="mb-0 leading-normal text-sm">Liras</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <div>
-                          <img src="../assets/img/team-3.jpg" class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-[70px] w-[70px] rounded-xl" alt="user2" />
-                        </div>
-                      </td>
-                      <td class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
-                        <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-3.6 text-xs rounded-1.8 py-2.2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Out of stock</span>
-                      </td>
-                      <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <span class="font-semibold leading-tight text-xs text-slate-400">6500</span>
-                      </td>
-                      <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                        <span class="font-semibold leading-tight text-xs text-slate-400">00</span>
-                      </td>
-                      <td>
-                        <button data-modal-target="popup-modal-2" data-modal-toggle="popup-modal-2" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:bg-gray-600"> Delete </a>
-                        </button>
-                      </td>
-                      <td>
-                      <button data-modal-target="authentication-modal-2" data-modal-toggle="authentication-modal-2" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-700 rounded-md hover:bg-green-600 focus:outline-none focus:bg-gray-600">Update</button>
-                      </td>
+                    @endforeach
 
 
-                      <!-- delete modal -->
-                      <div id="popup-modal-2" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                        <div class="relative w-full h-full max-w-md md:h-auto">
-                          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="popup-modal-2">
-                              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                              </svg>
-                              <span class="sr-only">Close modal</span>
+                    <!-- delete modal -->
+                    <div id="popup-modal-2" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+                      <div class="relative w-full h-full max-w-md md:h-auto">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                          <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="popup-modal-2">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                          </button>
+                          <div class="p-6 text-center">
+                            <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
+                            <button data-modal-target="popup-modal-2" data-modal-toggle="popup-modal-2" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:bg-gray-600">
+                              Yes, I'm sure
                             </button>
-                            <div class="p-6 text-center">
-                              <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                              </svg>
-                              <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
-                              <button data-modal-target="popup-modal-2" data-modal-toggle="popup-modal-2" class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:bg-gray-600">
-                                Yes, I'm sure
-                              </button>
-                              <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
-                            </div>
+                            <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <!-- update modal -->
+                    <!-- update modal -->
 
-                      <!-- Main modal -->
-                      <div id="authentication-modal-2" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-                        <div class="relative w-full h-full max-w-md md:h-auto">
+                    <!-- Main modal -->
+                    <div id="authentication-modal-2" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+                      <div class="relative w-full h-full max-w-md md:h-auto">
 
-                          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal-2">
-                              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                              </svg>
-                              <span class="sr-only">Close modal</span>
-                            </button>
-                            <div class="px-6 py-6 lg:px-8">
-                              <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add New Product</h3>
-                              <form>
-                                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                                  <div>
-                                    <label class="text-gray-700 dark:text-gray-200" for="productname">Product Name</label>
-                                    <input id="productname" type="text" placeholder="Product Name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-                                  </div>
-
-                                  <div>
-                                    <label class="text-gray-700 dark:text-gray-200" for="productquantity">Product Quantity</label>
-                                    <input id="productquantity" type="number" placeholder="10" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-                                  </div>
-
-                                  <div>
-                                    <label class="text-gray-700 dark:text-gray-200" for="productprice">Product Price</label>
-                                    <input id="productprice" type="number" placeholder="price" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-                                  </div>
-
-                                  <div>
-                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload image</label>
-                                    <input class="block w-full text-sm text-white-200 border border-sky-300 rounded-lg cursor-pointer bg-sky-50" id="file_input" type="file">
-                                  </div>
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                          <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal-2">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                          </button>
+                          <div class="px-6 py-6 lg:px-8">
+                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add New Product</h3>
+                            <form>
+                              <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                                <div>
+                                  <label class="text-gray-700 dark:text-gray-200" for="productname">Product Name</label>
+                                  <input id="productname" type="text" placeholder="Product Name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                                 </div>
 
-                                <div class="flex justify-end mt-6">
-                                  <button class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-700 rounded-md hover:bg-green-600 focus:outline-none focus:bg-green-600">Save</button>
+                                <div>
+                                  <label class="text-gray-700 dark:text-gray-200" for="productquantity">Product Quantity</label>
+                                  <input id="productquantity" type="number" placeholder="10" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                                 </div>
-                              </form>
-                            </div>
+
+                                <div>
+                                  <label class="text-gray-700 dark:text-gray-200" for="productprice">Product Price</label>
+                                  <input id="productprice" type="number" placeholder="price" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                                </div>
+
+                                <div>
+                                  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload image</label>
+                                  <input class="block w-full text-sm text-white-200 border border-sky-300 rounded-lg cursor-pointer bg-sky-50" id="file_input" type="file">
+                                </div>
+                              </div>
+
+                              <div class="flex justify-end mt-6">
+                                <button class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-700 rounded-md hover:bg-green-600 focus:outline-none focus:bg-green-600">Save</button>
+                              </div>
+                            </form>
                           </div>
+                        </div>
 
                   </tbody>
                 </table>

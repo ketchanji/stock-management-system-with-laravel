@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Product;
-use App\Models\Image;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,16 +82,15 @@ Route::get('/all-stock', function() {
 Route::get('/inventory', function() {
     return view('dashboards.worker.inventory');
 });
+ 
+
+Route::get('/all-stock', [ProductController::class, 'create']);
+Route::post('/all-stock', [ProductController::class, 'store']);
+
+Route::get('/all-stock', [ProductController::class, 'show']);
 
 
 
-Route::Post('/all-stock', function() {
-    Product::create([
-        'product_name' => request('product_name'),
-        'product_image' => request('product_image'),
-        'product_status' => request('product_status') ,
-        'product_price' => request('product_price'),
-        'product_quantity' => request('product_quantity')  
-    ]);
-});
+
+
 
