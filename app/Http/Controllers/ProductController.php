@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-   public function show(){
-        $data=Product::all();
-        view('dashboards.worker.all-stock')->with(['product' => $data]);
+    public function show(){
+        $products=Product::all();
+        return redirect('/all-stock')->with('products',  $products);
     }
 
     public function create()

@@ -84,11 +84,11 @@ Route::get('/inventory', function() {
 });
  
 
-Route::get('/all-stock', [ProductController::class, 'create']);
-Route::post('/all-stock', [ProductController::class, 'store']);
-
 Route::get('/all-stock', [ProductController::class, 'show']);
 
+
+Route::get('/all-stock', [ProductController::class, 'create']);
+Route::post('/all-stock', [ProductController::class, 'store']);
 
 
 

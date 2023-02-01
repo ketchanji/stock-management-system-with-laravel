@@ -288,7 +288,7 @@
                       <div class="px-6 py-6 lg:px-8">
                         <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add New Product</h3>
                         <form action="{{ url('all-stock') }}" method="POST" enctype="multipart/form-data">
-                          @csrf
+                          {!! csrf_field() !!}
                           <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                             <div>
                               <label class="text-gray-700 dark:text-gray-200" for="product_name">Product Name</label>
@@ -348,17 +348,18 @@
                 <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                   <thead class="align-bottom">
                     <tr>
-                      <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Product Name</th>
-                      <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">product image</th>
-                      <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Status</th>
-                      <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">price</th>
-                      <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Avaliable stock</th>
+                      <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">PRODUCT NAME</th>
+                      <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">PRODUCT IMAGE</th>
+                      <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">PRODUCT CATEGORY</th>
+                      <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">PRODUCT STATUS</th>
+                      <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">PRODUCT PRICE</th>
+                      <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">AVAILABLE STOCK</th>
                       <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70"></th>
                       <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($product as $prod)
+                    @foreach($products as $prod)
                     <tr>
                       <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <div class="flex px-2 py-1">
@@ -370,8 +371,11 @@
                       </td>
                       <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         <div>
-                          <img src="{{$prod['product_image']}}" class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-[70px] w-[70px] rounded-xl" alt="user1" />
+                          <img src="{{ asset['$prod->product_image']}}" class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-[70px] w-[70px] rounded-xl" alt="user1" />
                         </div>
+                      </td>
+                      <td class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
+                        <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-3.6 text-xs rounded-1.8 py-2.2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{$prod['product_category']}}</span>
                       </td>
                       <td class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
                         <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-3.6 text-xs rounded-1.8 py-2.2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{$prod['product_status']}}</span>
