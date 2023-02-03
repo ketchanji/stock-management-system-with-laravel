@@ -9,13 +9,13 @@
       <div class="max-w-xl mb-6">
         <div>
           <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-            New Colaboration
+            Welcome Back
           </p>
         </div>
         <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-          The quick, brown fox<br class="hidden md:block" />
-          jumps over
-          <span class="inline-block text-deep-purple-accent-400">a lazy dog</span>
+          Get started lets<br class="hidden md:block" />
+          Manage
+          <span class="inline-block text-deep-purple-accent-400"> Warehouse Stock</span>
         </h2>
         <p class="text-base text-gray-700 md:text-lg">
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo.

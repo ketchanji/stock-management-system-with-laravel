@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Models\Product;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -28,67 +29,67 @@ Route::get('/register', function() {
     return view('site.register');
 });
 
-// Admins route pages
-
-// Route::get('/admin', function() {
-//     return view('dashboards.admin.index');
-// });
-
-// Route::get('/profile', function() {
-//     return view('dashboards.admin.profile');
-// });
-
-// Route::get('/all-stock', function() {
-//     return view('dashboards.admin.all-stock');
-// });
-
-// Route::get('/inventory', function() {
-//     return view('dashboards.admin.inventory');
-// });
-
-// Manager route pages
-
-// Route::get('/manager', function() {
-//     return view('dashboards.manager.index');
-// });
-
-// Route::get('/profile', function() {
-//     return view('dashboards.manager.profile');
-// });
-
-// Route::get('/all-stock', function() {
-//     return view('dashboards.manager.all-stock');
-// });
-
-// Route::get('/inventory', function() {
-//     return view('dashboards.manager.inventory');
-// });
 
 
 // Worker route pages
 
-Route::get('/worker', function() {
-    return view('dashboards.worker.index');
+Route::get('/dashboard', function() {
+    return view('dashboards.index');
 });
 
 Route::get('/profile', function() {
-    return view('dashboards.worker.profile');
+    return view('dashboards.profile');
 });
 
 Route::get('/all-stock', function() {
-    return view('dashboards.worker.all-stock');
+    return view('dashboards.all-stock');
 });
 
 Route::get('/inventory', function() {
-    return view('dashboards.worker.inventory');
+    return view('dashboards.inventory');
+});
+ 
+Route::get('/category', function() {
+    return view('dashboards.category');
 });
  
 
-Route::get('/all-stock', [ProductController::class, 'show']);
 
+
+/*******************  Route to add and save product   *****************************/ 
 
 Route::get('/all-stock', [ProductController::class, 'create']);
 Route::post('/all-stock', [ProductController::class, 'store']);
+
+/***** Ends Route for product ******/ 
+
+/*******************  Route to add and save category   *****************************/ 
+
+Route::get('/category', [ProductController::class, 'show']);
+Route::post('/category', [ProductController::class, 'keep']);
+
+/***** Ends Route for category ******/ 
+
+
+/*************** Start Route for update product   *******************/ 
+
+Route::get('click_edit/{id}',[ProductController::class, 'edit_function']);
+
+Route::post('/update/{id}',[ProductController::class, 'update_function']);
+
+/***** Ends Route for update ******/ 
+
+/*************** Start Route for delete product   *******************/ 
+
+Route::get('click_delete/{id}',[ProductController::class, 'delete_function']);
+
+/***** Ends Route for delete ******/ 
+
+/*************** Start Route for delete category   *******************/ 
+
+Route::get('click_delete/{id}',[ProductController::class, 'destroy_function']);
+
+/***** Ends Route for delete ******/ 
 
 
 
