@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Models\Product;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', function() {
-    return view('site.login');
+    return view('auth.login');
 });
 
 Route::get('/register', function() {
@@ -31,28 +32,18 @@ Route::get('/register', function() {
 
 
 
-// Worker route pages
+// route pages
 
-Route::get('/dashboard', function() {
-    return view('dashboards.index');
-});
 
-Route::get('/profile', function() {
-    return view('dashboards.profile');
-});
 
-Route::get('/all-stock', function() {
-    return view('dashboards.all-stock');
-});
 
-Route::get('/inventory', function() {
-    return view('dashboards.inventory');
-});
- 
-Route::get('/category', function() {
-    return view('dashboards.category');
-});
- 
+Auth::routes();
+
+Route::get('index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+
+
+Route::get('/gate', [App\Http\Controllers\AuthorizationController::class, 'index'])->name('gate.index')->middleware('can:isAdmin');
+
 
 
 
@@ -90,8 +81,3 @@ Route::get('click_delete/{id}',[ProductController::class, 'delete_function']);
 Route::get('click_delete/{id}',[ProductController::class, 'destroy_function']);
 
 /***** Ends Route for delete ******/ 
-
-
-
-
-

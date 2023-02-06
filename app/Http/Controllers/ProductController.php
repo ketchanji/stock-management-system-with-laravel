@@ -44,7 +44,7 @@ class ProductController extends Controller
         $product->product_name = $request->input('product_name');
         $product->product_status = $request->input('product_status');
         $product->product_price = $request->input('product_price');
-        $product->product_category = $request->input('product_category');
+        $product->category_id = $request->input('category_id');
         $product->product_quantity = $request->input('product_quantity');
         if ($request->hasfile('product_image')) {
             $file = $request->file('product_image');
@@ -68,7 +68,7 @@ class ProductController extends Controller
         $product_name = $request->input('product_name');
         $product_status = $request->input('product_status');
         $product_price = $request->input('product_price');
-        $product_category = $request->input('product_category');
+        $category_id = $request->input('category_id');
         $product_quantity = $request->input('product_quantity');
         if ($request->hasfile('product_image')) {
             $file = $request->file('product_image');
@@ -78,7 +78,7 @@ class ProductController extends Controller
             $product_image = $filename;
         }
 
-        DB::update('update products set product_name = ?, product_status = ?, product_price = ?, product_category = ?, product_quantity = ?, product_image = ? where id = ?', [$product_name, $product_status, $product_price, $product_category, $product_quantity, $product_image, $id]);
+        DB::update('update products set product_name = ?, product_status = ?, product_price = ?, category_id = ?, product_quantity = ?, product_image = ? where id = ?', [$product_name, $product_status, $product_price, $category_id, $product_quantity, $product_image, $id]);
 
         return redirect()->back()->with('update', 'product updated added successfully');
     }

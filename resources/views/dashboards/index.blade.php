@@ -153,7 +153,7 @@
               </li>
               <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
             </ol>
-            <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+            <h6 class="mb-0 font-bold capitalize">Welcome {{ Auth::user()->name }}</h6>
           </nav>
 
           <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
@@ -179,8 +179,11 @@
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to Logout</h3>
-                        <button class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-700 rounded-md hover:bg-red-600 ">Yes, I'm sure</button>
-
+                        <button class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-red-700 rounded-md hover:bg-red-600 " href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Yes, I'm sure</button>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                        </form>
                         <button data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
                       </div>
                     </div>
